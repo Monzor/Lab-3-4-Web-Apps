@@ -1,0 +1,26 @@
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+</head>
+<header></header>
+<body>
+    <form action="AddPerson" method="post">
+        <div class="form-group">
+            <label>Name</label>
+
+            <input type="text" class="form-control" name="FirstName" placeholder="First Name" />
+            <input type="text" class="form-control" name="LastName" placeholder="Last Name" />
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+
+            <input type="text" class="form-control" name="Age" placeholder="Numeric" />
+
+
+            <label>Birthdate</label>
+            <input type="datetime" class="form-control" name="birthdate" placeholder="MM/DD/YYYY"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="submit" value="Submit" />
+        </div>
+    </form>
+</body>
