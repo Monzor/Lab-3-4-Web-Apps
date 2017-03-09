@@ -3,13 +3,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
 </head>
 <div class="container">
-    <strong>
         <div class="jumbotron">
             <h1> @Model.DayMessage</h1>
             <h3> The time is: @Model.Time on @Model.DayOfWeek @Model.Month / @Model.Day / @Model.Year</h3>
             <h3> @Model.DaysLeftNextYears more days until 2018!</h3>
         </div>
-    </strong>
+        <a asp-action="Create" asp-controller="People" class="btn btn-default">Lab 4 - Add Person</a>   
 </div>
 
 

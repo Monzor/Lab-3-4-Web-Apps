@@ -1,9 +1,9 @@
-@using Lab3.Modells
-<header></header>
-<h1>
-<strong>
-    Name: @Model.FirstName @Model.LastName<br>
-    Age: @Model.Age <br>
-    Birthday: @Model.BirthDate
-</strong>
-</h1>
+@model List<Lab3.Modells.Person>
+
+    @foreach (var p in Model)
+    {
+        <p>@p.FirstName </p>
+        <p>@p.LastName </p>
+        <p>@p.Age </p>
+        <p>@p.BirthDate </p>
+    }
