@@ -1,9 +1,32 @@
-@model List<Lab3.Modells.Person>
-
-    @foreach (var p in Model)
-    {
-        <p>@p.FirstName </p>
-        <p>@p.LastName </p>
-        <p>@p.Age </p>
-        <p>@p.BirthDate </p>
-    }
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+</head>
+<body>
+    <div class="container">
+        <h2>Personal Information</h2>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@ViewData["FirstName"]</td>
+                    <td>@ViewData["LastName"]</td>
+                    <td>@ViewData["BirthDate"]</td>
+                    <td>@Model.Age</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

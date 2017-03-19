@@ -1,15 +1,42 @@
-﻿@model Lab3.Modells.GreetingModel
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    var greeting = "";
+    if (DateTime.Now.Hour < 12)
+    {
+        greeting = "Good Morning!";
+    }
+    else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 18)
+    {
+        greeting = "Good Afternoon!";
+    }
+    else { greeting = "Good Evening!"; }
+}
+@{
+    var newYear = DateTime.Parse("January 1, 2018");
+    var today = DateTime.Now;
+
+    var x = newYear - today;
+    var countdown = x.ToString("ddd");
+}
+<html>
 <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 </head>
-<div class="container">
-        <div class="jumbotron">
-            <h1> @Model.DayMessage</h1>
-            <h3> The time is: @Model.Time on @Model.DayOfWeek @Model.Month / @Model.Day / @Model.Year</h3>
-            <h3> @Model.DaysLeftNextYears more days until 2018!</h3>
-        </div>
-        <a asp-action="Create" asp-controller="People" class="btn btn-default">Lab 4 - Add Person</a>   
-</div>
-
-
-
+<body>
+    <h2>@greeting</h2>
+    <h4>The time is @DateTime.Now.ToString("t") on @DateTime.Now.ToString("D")</h4>
+    <h4>@countdown more days until 2018</h4>
+    <br />
+    <br />
+    <div class="btn-group">
+        <a asp-action="AddPerson" asp-controller="Person" class="btn btn-default">Lab 3 - Add Person</a>
+        <a asp-action="Create" asp-controller="People" class="btn btn-default">Lab 4 - Add Person</a>
+        <a asp-action="Index" asp-controller="People" class="btn btn-default">Lab 4 - View People</a>
+    </div>
+</body>
+</html>

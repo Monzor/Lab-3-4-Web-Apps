@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-//using EFGetStarted.AspNetCore.NewDb.Models;
-using Microsoft.EntityFrameworkCore;
 using Lab3.Modells;
+using Microsoft.EntityFrameworkCore;
 
-namespace Lab3
+namespace Lab4
 {
     public class Startup
     {
@@ -31,11 +26,10 @@ namespace Lab3
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-
-            services.AddDbContext<PersonContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddMvc();
+
+            services.AddDbContext<PeopleContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

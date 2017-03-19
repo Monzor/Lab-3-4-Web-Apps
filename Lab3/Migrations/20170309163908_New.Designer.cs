@@ -7,9 +7,9 @@ using Lab3.Modells;
 
 namespace Lab3.Migrations
 {
-    [DbContext(typeof(PersonContext))]
-    [Migration("20170303031858_NewMigration")]
-    partial class NewMigration
+    [DbContext(typeof(PeopleContext))]
+    [Migration("20170309163908_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,20 +20,30 @@ namespace Lab3.Migrations
             modelBuilder.Entity("Lab3.Modells.Person", b =>
                 {
                     b.Property<int>("PersonId")
-                        .ValueGeneratedOnAdd()
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BirthDate");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(20);
-
-                    b.Property<int>("Age");
-
-                    b.Property<DateTime>("BirthDate");
-
-                    b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
+                    b.Property<int?>("PersonId1");
+
                     b.HasKey("PersonId");
 
-                    b.ToTable("People");
+                    b.HasIndex("PersonId1");
+
+                    b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("Lab3.Modells.Person", b =>
+                {
+                    b.HasOne("Lab3.Modells.Person")
+                        .WithMany("Persons")
+                        .HasForeignKey("PersonId1");
                 });
         }
     }

@@ -1,26 +1,35 @@
+@model Lab3.Modells.Person
+<html>
 <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 </head>
-<header></header>
 <body>
-    <form action="AddPerson" method="post">
-        <div class="form-group">
-            <label>Name</label>
-
-            <input type="text" class="form-control" name="FirstName" placeholder="First Name" />
-            <input type="text" class="form-control" name="LastName" placeholder="Last Name" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>New Person</h2>
+                <br />
+                <form asp-action="ShowPerson" method="post">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input class="form-control" type="text" placeholder="Swam" asp-for="FirstName" name="firstname">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input class="form-control" type="text" placeholder="Blonde" asp-for="LastName" name="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Birth Date</label>
+                        <input class="form-control" type="text" placeholder="10-05-1994" asp-for="BirthDate" name="birthdate" pattern="^\d{2}-\d{2}-\d{4}$">
+                    </div>
+                    <input type="submit" class="btn btn-default" value="Submit">
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Age</label>
-
-            <input type="text" class="form-control" name="Age" placeholder="Numeric" />
-
-
-            <label>Birthdate</label>
-            <input type="datetime" class="form-control" name="birthdate" placeholder="MM/DD/YYYY"/>
-        </div>
-        <div class="form-group">
-            <input type="submit" name="submit" value="Submit" />
-        </div>
-    </form>
+    </div>
 </body>
+</html>
